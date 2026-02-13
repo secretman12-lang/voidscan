@@ -4,3 +4,6 @@ __pycache__/
 voidscan_results_*.json
 voidscan_results_*.txt
 .env
+dist/
+build/
+*.egg-info/
