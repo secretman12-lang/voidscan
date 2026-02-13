@@ -1,0 +1,9 @@
+[project]
+name = "voidscan"
+version = "0.1.0"
+description = "Advanced experimental OSINT username scanner"
+authors = [{ name = "secretman12-lang" }]
+dependencies = ["aiohttp", "typer", "rich"]
+
+[project.scripts]
+voidscan = "voidscan.cli:app"

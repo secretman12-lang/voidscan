@@ -1,0 +1,6 @@
+venv/
+__pycache__/
+*.pyc
+voidscan_results_*.json
+voidscan_results_*.txt
+.env
