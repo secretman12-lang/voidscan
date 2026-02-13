@@ -1,9 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "voidscan"
-version = "0.1.0"
-description = "Advanced experimental OSINT username scanner"
-authors = [{ name = "secretman12-lang" }]
-dependencies = ["aiohttp", "typer", "rich"]
+version = "0.1.1"
+description = "Advanced Experimental OSINT Username Scanner"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+    { name = "secretman12-lang" }
+]
+license = "MIT"
+dependencies = [
+    "aiohttp",
+    "typer",
+    "rich"
+]
 
 [project.scripts]
 voidscan = "voidscan.cli:app"
+
+[tool.setuptools]
+packages = ["voidscan"]
