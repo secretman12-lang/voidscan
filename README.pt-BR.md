@@ -1,5 +1,7 @@
 # VoidScan
 
+🇺🇸 Read in English: [README](README.md)
+
 Scanner OSINT Experimental de Usernames
 
 ---
@@ -86,6 +88,6 @@ python -m voidscan.cli --help
 
 ## ⚠ Aviso
 
-Esta ferramenta é destinada apenas para fins educacionais e pesquisa OSINT legal.
+Esta ferramenta é destinada apenas para fins educacionais e pesquisa OSINT legal.  
 
 O autor não se responsabiliza por uso indevido.

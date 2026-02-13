@@ -1,5 +1,7 @@
 # VoidScan
 
+🇧🇷 Leia em Português: [README.pt-BR](README.pt-BR.md)
+
 Advanced Experimental OSINT Username Scanner
 
 ---
