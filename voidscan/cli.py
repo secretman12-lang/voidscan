@@ -1,53 +1,61 @@
-import asyncio
 import typer
 from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
 
-from .checker import deep_scan
+from .checker import scan_username
 
 app = typer.Typer()
 console = Console()
 
+
 @app.command()
-def scan(
+def main(
     username: str,
-    strict: bool = typer.Option(False, "--strict", help="Strict mode (accurate, fewer results)"),
-    deep: bool = typer.Option(False, "--deep", help="Deep mode (variations + broader scan)")
+    deep: bool = typer.Option(False, "--deep", help="Enable deep scan"),
+    strict: bool = typer.Option(False, "--strict", help="Enable strict mode"),
 ):
+    console.print(Panel("VOIDSCAN", expand=True))
 
     mode = "normal"
-    if strict:
-        mode = "strict"
     if deep:
         mode = "deep"
+    elif strict:
+        mode = "strict"
 
-    console.print(Panel("VOIDSCAN", style="cyan"))
-    console.print(f"Target: {username}")
-    console.print(f"Mode: {mode}\n")
+    console.print(f"[bold]Target:[/bold] {username}")
+    console.print(f"[bold]Mode:[/bold] {mode}\n")
 
-    results = asyncio.run(deep_scan(username, mode))
-
-    found = [r for r in results if r["exists"]]
+    results = scan_username(username, deep=deep, strict=strict)
 
     table = Table(title="Results")
-    table.add_column("Site")
-    table.add_column("Username")
-    table.add_column("HTTP")
-    table.add_column("URL")
+    table.add_column("Site", style="cyan")
+    table.add_column("Username", style="green")
+    table.add_column("HTTP", justify="center")
+    table.add_column("URL", overflow="fold")  # permite quebra de linha
 
-    for r in found:
-        table.add_row(
-            r["site"],
-            r["username"],
-            str(r["status"]),
-            r["url"]
-        )
+    found_links = []
 
-    if found:
-        console.print(table)
-    else:
-        console.print("[red]No profiles found.[/red]")
+    for result in results:
+        if result["status"] == 200:
+            table.add_row(
+                result["site"],
+                result["username"],
+                str(result["status"]),
+                result["url"],
+            )
+            found_links.append(result["url"])
+
+    console.print(table)
+
+    # 🔥 Mostrar links completos abaixo
+    if found_links:
+        console.print("\n[bold]Full URLs:[/bold]\n")
+        for link in found_links:
+            console.print(link)
+
+    console.print()
+
 
 if __name__ == "__main__":
     app()
