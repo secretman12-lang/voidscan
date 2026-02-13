@@ -1,18 +1,30 @@
-{
-  "Instagram": {
-    "url": "https://www.instagram.com/{}/",
-    "error": "Sorry, this page isn't available"
+[
+  {
+    "name": "Instagram",
+    "url": "https://www.instagram.com/{username}/"
   },
-  "Reddit": {
-    "url": "https://www.reddit.com/user/{}/",
-    "error": "Sorry, nobody on Reddit goes by that name"
+  {
+    "name": "Reddit",
+    "url": "https://www.reddit.com/user/{username}/"
   },
-  "GitHub": {
-    "url": "https://github.com/{}",
-    "error": "Not Found"
+  {
+    "name": "TikTok",
+    "url": "https://www.tiktok.com/@{username}"
   },
-  "TikTok": {
-    "url": "https://www.tiktok.com/@{}",
-    "error": "Couldn't find this account"
+  {
+    "name": "GitHub",
+    "url": "https://github.com/{username}"
+  },
+  {
+    "name": "Twitch",
+    "url": "https://www.twitch.tv/{username}"
+  },
+  {
+    "name": "Pinterest",
+    "url": "https://www.pinterest.com/{username}/"
+  },
+  {
+    "name": "Steam",
+    "url": "https://steamcommunity.com/id/{username}"
   }
-}
+]
